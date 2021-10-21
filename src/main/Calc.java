@@ -2,8 +2,8 @@ package main;
 
 public class Calc {
 
-	public int add(int a,int b) {
-		return a + b;
+	public int add(int a,int y) {
+		return a + y;
 	}
 	
 	public int dec(int x,int y) {
