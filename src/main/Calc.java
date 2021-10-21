@@ -6,7 +6,6 @@ public class Calc {
 		return a + y;
 	}
 	
-	
 	public int dec(int x,int y) {
 		return x - y;
 	}
