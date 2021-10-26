@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="Git-test" default="unit-test" basedir=".">
+<project name="Git-test" default="unit-test" basedir="Git-test">
     <property name="webapp" value="${basedir}/src/main/webapp"/>
     <property name="compile.src" location="${basedir}/src/main"/>
     <property name="compile.resources" location="${basedir}/src/main/resources"/>
