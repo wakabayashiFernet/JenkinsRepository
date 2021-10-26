@@ -4,7 +4,7 @@
     <property name="compile.src" location="${basedir}/src/main"/>
     <property name="compile.resources" location="${basedir}/src/main/resources"/>
     <property name="compile.dest" location="${webapp}/WEB-INF/classes"/>
-    <property name="compile.test.src" location="${basedir}/src/test"/>
+    <property name="compile.test.src" location="${basedir}/test/main"/>
     <property name="compile.test.resources" location="${basedir}/src/test/resources"/>
     <property name="compile.test.dest" location="${basedir}/target/test-classes"/>
     <property name="tomcat.dir" value="/usr/local/tomcat/lib"/>
