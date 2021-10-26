@@ -36,9 +36,6 @@
                 <pathelement location="${tomcat.dir}/jsp-api.jar" />
             </classpath>
         </javac>
-        <copy todir="${compile.dest}">
-            <fileset dir="${compile.resources}"/>
-        </copy>
     </target>
     <target name="test-compile">
         <mkdir dir="${compile.test.dest}"/>
@@ -58,9 +55,9 @@
                 <pathelement location="${tomcat.dir}/jsp-api.jar" />
             </classpath>
         </javac>
-        <copy todir="${compile.dest}">
+        <!-- <copy todir="${compile.dest}">
             <fileset dir="${compile.resources}"/>
-        </copy>
+        </copy> -->
     </target>
     <!--=================================
           target: checkstyle
