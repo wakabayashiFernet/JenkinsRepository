@@ -7,7 +7,7 @@
     <property name="compile.test.src" location="${basedir}/test/main"/>
     <property name="compile.test.resources" location="${basedir}/src/test/cd .."/>
     <property name="compile.test.dest" location="${basedir}/report/test/"/>
-    <property name="tomcat.dir" value="/usr/local/tomcat/lib"/>
+    <property name="tomcat.dir" value="${basedir}/lib"/>
     <property name="findbugs.dir" value="${basedir}/findbugs"/>
     <property name="report.dir" value="${basedir}/report"/>
     <property name="report.test.dir" value="${basedir}/report/test"/>
