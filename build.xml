@@ -6,7 +6,7 @@
     <property name="compile.dest" location="${webapp}/WEB-INF/classes"/>
     <property name="compile.test.src" location="${basedir}/test/main"/>
     <property name="compile.test.resources" location="${basedir}/src/test/cd .."/>
-    <property name="compile.test.dest" location="${basedir}/report/test"/>
+    <property name="compile.test.dest" location="${basedir}/report/test/*.xml"/>
     <property name="tomcat.dir" value="/usr/local/tomcat/lib"/>
     <property name="findbugs.dir" value="${basedir}/findbugs"/>
     <property name="report.dir" value="${basedir}/report"/>
