@@ -29,8 +29,7 @@ public class CalcTest {
 		assertEquals(6, result);
 	}
 	
-	
-	@Test
+		@Test
 	public void addで加算処理ができる２() {
 		Calc calc = new Calc();
 		int result = calc.add(3, 5);
