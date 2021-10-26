@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="JenkinsRepository" default="unit-test" basedir=".">
     <property name="webapp" value="${basedir}/src/main/webapp"/>
-    <property name="compile.src" location="${basedir}/src/main/java"/>
+    <property name="compile.src" location="${basedir}/src/main"/>
     <property name="compile.resources" location="${basedir}/src/main/resources"/>
     <property name="compile.dest" location="${webapp}/WEB-INF/classes"/>
     <property name="compile.test.src" location="${basedir}/src/test/java"/>
