@@ -48,6 +48,7 @@
                 <fileset dir="${basedir}/lib">
                     <include name="*.jar"/>
                 </fileset>
+                <pathelement location="${basedir}/usr/share/java/junit-4.13.2.jar" />
                 <pathelement location="${tomcat.dir}/servlet-api.jar" />
                 <pathelement location="${tomcat.dir}/annotations-api.jar" />
                 <pathelement location="${tomcat.dir}/el-api.jar" />
