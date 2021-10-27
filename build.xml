@@ -108,6 +108,9 @@
                 <fileset dir="${compile.test.src}" >
                     <include name="**/*Test.java"/>
                 </fileset>
+                <fileset dir="${compile.src}" >
+                    <include name="**/*.java"/>
+                </fileset>
             </batchtest>
         </junit>
     </target>
