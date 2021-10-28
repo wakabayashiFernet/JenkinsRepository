@@ -8,6 +8,7 @@
  
   <path id="classpath">
     <pathelement location="${out}"/>
+    <pathelement path="." />
   </path>
   <path id="classpath-test">
     <pathelement location="${lib}/junit-4.13.2.jar"/>
