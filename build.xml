@@ -1,124 +1,42 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project name="Git-test" default="unit-test" basedir=".">
-    <property name="webapp" value="${basedir}/src/main/webapp"/>
-    <property name="compile.src" location="${basedir}/src/main"/>
-    <property name="compile.resources" location="${basedir}/src/main/resources"/>
-    <property name="compile.dest" location="${webapp}/WEB-INF/classes"/>
-    <property name="compile.test.src" location="${basedir}/src/test"/>
-    <property name="compile.test.resources" location="${basedir}/src/test/cd .."/>
-    <property name="compile.test.dest" location="${basedir}/report/test/"/>
-    <property name="tomcat.dir" value="${basedir}/lib"/>
-    <property name="findbugs.dir" value="${basedir}/findbugs"/>
-    <property name="report.dir" value="${basedir}/report"/>
-    <property name="report.test.dir" value="${basedir}/report/test"/>
-    <!-- =================================
-          target: init
-         ================================= -->
-    <target name="init" description="initialize">
-        <mkdir dir="${report.test.dir}"/>
-        <delete file="${report.dir}/**/*.xml"/>
-    </target>
-    <!-- =================================
-          target: compile
-         ================================= -->
-    <target name="compile" depends="clean">
-        <mkdir dir="${compile.dest}"/>
-        <javac srcdir="${compile.src}" destdir="${compile.dest}" encoding="UTF-8"
-            includeantruntime="false">
-            <classpath>
-                <fileset dir="${webapp}/WEB-INF/lib">
-                    <include name="*.jar"/>
-                </fileset>
-                <pathelement location="${tomcat.dir}/servlet-api.jar" />
-                <pathelement location="${tomcat.dir}/annotations-api.jar" />
-                <pathelement location="${tomcat.dir}/el-api.jar" />
-                <pathelement location="${tomcat.dir}/jasper.jar" />
-                <pathelement location="${tomcat.dir}/jsp-api.jar" />
-            </classpath>
-        </javac>
-    </target>
-    <target name="test-compile">
-        <mkdir dir="${compile.test.dest}"/>
-        <javac srcdir="${compile.test.src}" destdir="${compile.test.dest}" encoding="UTF-8"
-            includeantruntime="false">
-            <classpath>
-                <fileset dir="${webapp}/WEB-INF/lib">
-                    <include name="*.jar"/>
-                </fileset>
-                <fileset dir="${basedir}/lib">
-                    <include name="*.jar"/>
-                </fileset>
-                <pathelement location="${tomcat.dir}/servlet-api.jar" />
-                <pathelement location="${tomcat.dir}/annotations-api.jar" />
-                <pathelement location="${tomcat.dir}/el-api.jar" />
-                <pathelement location="${tomcat.dir}/jasper.jar" />
-                <pathelement location="${tomcat.dir}/jsp-api.jar" />
-            </classpath>
-        </javac>
-        <!-- <copy todir="${compile.dest}">
-            <fileset dir="${compile.resources}"/>
-        </copy> -->
-    </target>
-    <!--=================================
-          target: checkstyle
-    <target name="checkstyle" >
-        <taskdef resource="checkstyletask.properties"
-                   classpath="${basedir}/checkstyle-5.5-all.jar" />
-         <checkstyle config="${basedir}/checkstyle.xml">
-            <fileset dir="${basedir}"
-                includes="**/*.java"
-                excludes="test/**"/>
-             <formatter type="xml" tofile="${report.dir}/checkstyle_report.xml"/>
-        </checkstyle>
-    </target>
-          target: findbugs
-    <target name="findbugs">
-        <mkdir dir="${report.dir}"/>
-        <taskdef name="findbugs"
-            classname="edu.umd.cs.findbugs.anttask.FindBugsTask"
-            classpath="${findbugs.dir}/lib/findbugs-ant.jar">
-        </taskdef>
-        <findbugs home="${findbugs.dir}"
-                  output="xml"
-                  outputFile="${report.dir}/findbugs_report.xml" >
-            <class location="${compile.dest}" />
-        </findbugs>
-      </target>
-      ================================= -->
-    <!-- =================================
-          target: junit
-    ================================= -->
-    <target name="unit-test" depends="init,compile,test-compile" description="execute Junit">
-        <delete>
-            <fileset dir="${report.test.dir}" includes="TEST-*"/>
-        </delete>
-        <junit fork="yes" haltonfailure="false"  >
-        <formatter type="xml" usefile="true" />
-            <classpath>
-                <fileset dir="${basedir}/lib">
-                   <include name="*.jar"/>
-                </fileset>
-                <fileset dir="${webapp}/WEB-INF/lib">
-                   <include name="*.jar"/>
-                </fileset>
-                <pathelement location="${compile.dest}"/>
-                <pathelement location="${compile.test.dest}"/>
-            </classpath>
-            <batchtest fork="yes" todir="${report.test.dir}" >
-                <fileset dir="${compile.test.src}" >
-                    <include name="**/*Test.java"/>
-                </fileset>
-                <fileset dir="${compile.src}" >
-                    <include name="**/*.java"/>
-                </fileset>
-            </batchtest>
-        </junit>
-    </target>
-    <!-- =================================
-            target: clean
-        ================================= -->
-    <target name="clean" description="clean up">
-        <delete dir="${compile.dest}"/>
-        <delete dir="${compile.test.dest}"/>
-    </target>
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="Git-test" default="test" basedir=".">
+  <description>7章の演習課題：解答例</description>
+  <property name="src" location="src/main"/>
+  <property name="lib" location="lib"/>
+  <property name="test" location="src/test"/>
+  <property name="out" location="out"/>
+ 
+  <path id="classpath">
+    <pathelement location="${out}"/>
+  </path>
+  <path id="classpath-test">
+    <pathelement location="${lib}/junit.jar"/>
+  </path>
+ 
+  <target name="compile" description="テスト対象をコンパイル">
+    <mkdir dir="${out}"/>
+    <javac srcdir="${src}" destdir="${out}" includeantruntime="false" debug="true"/>
+  </target>
+ 
+  <target name="compile-test" description="テストプログラムをコンパイル">
+    <javac srcdir="${test}" destdir="${out}"
+ classpathref="classpath-test" includeantruntime="false" debug="true"/>
+  </target>
+ 
+  <target name="test" depends="compile, compile-test" description="テストを実行">
+    <junit printsummary="yes">
+      <classpath>
+        <path refid="classpath"/>
+        <path refid="classpath-test"/>
+      </classpath>
+      <formatter type="xml" />
+      <batchtest todir="${out}">
+        <fileset dir="${test}" includes="**/*Test.java" />
+      </batchtest>
+    </junit>
+  </target>
+   
+  <target name="delete" description="コンパイル結果、テスト結果を削除">
+    <delete dir="${out}" />
+  </target>
 </project>
