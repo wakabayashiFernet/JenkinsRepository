@@ -25,6 +25,7 @@ public class CalcTest {
 //	public void tearDown() throws Exception {
 //	}
 
+	
 	@Test
 	public void addで加算処理ができる() {
 		Calc calc = new Calc();
