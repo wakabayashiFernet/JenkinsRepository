@@ -10,8 +10,8 @@
     <pathelement location="${out}"/>
   </path>
   <path id="classpath-test">
-    <pathelement location="${lib}/junit-4.13.2.jar"/>
     <pathelement path="." />
+    <pathelement location="${lib}/junit-4.13.2.jar"/>
   </path>
  
   <target name="compile" description="テスト対象をコンパイル">
