@@ -9,9 +9,9 @@
   <path id="classpath">
     <pathelement location="${out}"/>
   </path>
-  <path id="classpath-test">
+  <!-- <path id="classpath-test">
     <pathelement location="${lib}/junit.jar"/>
-  </path>
+  </path> -->
  
   <target name="compile" description="テスト対象をコンパイル">
     <mkdir dir="${out}"/>
