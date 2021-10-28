@@ -47,8 +47,8 @@ public class CalcTest {
 	@Test
 	public void divで除算処理ができる1() {
 		Calc calc = new Calc();
-		int result = calc.div(5, 0);
-		assertEquals(0, result);
+		int result = calc.div(6, 2);
+		assertEquals(3, result);
 	}
 	@Test
 	public void divで除算処理ができる2() {
